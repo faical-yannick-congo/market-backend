@@ -163,8 +163,10 @@ def market_pushing_country(country, city):
             day = str(now_time).split(" ")[0]
             date = datetime.datetime.strptime(day, "%Y-%m-%d")
 
-            market_pulled = Market.objects(city=city.lower(), country=country, status='pulled', day=day).first()
-
+            if city == "all":
+                market_pulled = Market.objects(country=country, status='pulled', day=day).first()
+            else:
+                market_pulled = Market.objects(city=city.lower(), country=country, status='pulled', day=day).first()
             if market_pulled:
                 market_pulled.status = 'pushing'
                 market_pulled.save()
