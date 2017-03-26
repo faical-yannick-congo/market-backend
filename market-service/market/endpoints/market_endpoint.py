@@ -40,9 +40,9 @@ def market_by_city(country, city):
     if fk.request.method == 'GET':
         if city == 'all':
             if country == 'all':
-                markets = [m.info() for b in Market.objects()]
+                markets = [m.info() for m in Market.objects()]
             else:
-                markets = [m.info() for b in Market.objects(country=country)]
+                markets = [m.info() for m in Market.objects(country=country)]
         else:
             markets = [b.info() for c in Market.objects(city=city.lower(), country=country)]
         return service_response(200, 'City: {0} of Country: {1} market history'.format(city.lower(), country), {'size':len(markets), 'history':markets})
