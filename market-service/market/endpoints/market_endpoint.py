@@ -137,7 +137,7 @@ def message_send():
                     market = Market(created_at=str(datetime.datetime.utcnow()), sender=sender, city=city.lower(), country=country, day=day)
                     market.message = content
                     market.save()
-                    return service_response(200, translator.translate('Your message was received'), translator.translate('It will be market soon.'))
+                    return service_response(200, translator.translate('Your message was received'), translator.translate('Message recieved. It will be on the market soon.'))
         else:
             return service_response(204, 'User registration failed', 'No data submitted.')
     else:
