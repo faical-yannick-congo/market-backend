@@ -97,7 +97,7 @@ def message_send():
     if fk.request.method == 'POST':
         if fk.request.data:
             print(fk.request.data)
-            data = json.loads(fk.request.data, encoding='utf-8')
+            data = json.loads(fk.request.data, encoding='utf-16')
             sender = data.get('sender', None)
             content = data.get('content', None)
 
